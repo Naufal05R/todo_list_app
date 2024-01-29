@@ -6,40 +6,67 @@ class TodoItem extends StatelessWidget {
   final Todo todo;
   final onTodoChanged;
   final onDeleteItem;
+  final index;
 
   const TodoItem({
     Key? key,
     required this.todo,
     required this.onTodoChanged,
     required this.onDeleteItem,
+    this.index,
   }) : super(key: key);
 
-  String getColorName(int colorNumber) {
-    String colorName = "";
+  Color getTileColorFromIndex(int colorNumber) {
+    Color colorName = Colors.white;
     switch (colorNumber) {
+      case 0:
+        colorName = Colors.pink.shade100;
+        break;
       case 1:
-        colorName = "Red";
+        colorName = Colors.orange.shade100;
         break;
       case 2:
-        colorName = "Orange";
+        colorName = Colors.green.shade100;
         break;
       case 3:
-        colorName = "Yellow";
+        colorName = Colors.blue.shade100;
         break;
       case 4:
-        colorName = "Green";
+        colorName = Colors.indigo.shade100;
         break;
       case 5:
-        colorName = "Blue";
-        break;
-      case 6:
-        colorName = "Indigo";
-        break;
-      case 7:
-        colorName = "Violet";
+        colorName = Colors.purple.shade100;
         break;
       default:
-        colorName = "White";
+        colorName = Colors.white;
+        break;
+    }
+    return colorName;
+  }
+
+  Color getLeadingeColorFromIndex(int colorNumber) {
+    Color colorName = Colors.white;
+    switch (colorNumber) {
+      case 0:
+        colorName = Colors.pink.shade400;
+        break;
+      case 1:
+        colorName = Colors.orange.shade400;
+        break;
+      case 2:
+        colorName = Colors.green.shade400;
+        break;
+      case 3:
+        colorName = Colors.blue.shade400;
+        break;
+      case 4:
+        colorName = Colors.indigo.shade400;
+        break;
+      case 5:
+        colorName = Colors.purple.shade400;
+        break;
+      default:
+        colorName = Colors.white;
         break;
     }
     return colorName;
@@ -57,10 +84,10 @@ class TodoItem extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           contentPadding:
               const EdgeInsets.only(left: 20, right: 15, top: 5, bottom: 5),
-          tileColor: Colors.white,
+          tileColor: getTileColorFromIndex(index % 6),
           leading: Icon(
             todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
-            color: tdBlue,
+            color: getLeadingeColorFromIndex(index % 6),
           ),
           title: Text(todo.todoText!,
               style: TextStyle(

@@ -46,10 +46,27 @@ class _HomeState extends State<Home> {
                     ),
                     for (Todo todo in _foundTodo.reversed)
                       TodoItem(
+                        index: _foundTodo.indexOf(todo),
                         todo: todo,
                         onTodoChanged: _handleTodoChange,
                         onDeleteItem: _deleteTodoItem,
                       ),
+                    // for (int index = _foundTodo.length - 1; index >= 0; index--) {
+                    //   Todo todo = _foundTodo[index];
+                    //   TodoItem(
+                    //     todo: todo,
+                    //     onTodoChanged: _handleTodoChange,
+                    //     onDeleteItem: _deleteTodoItem,
+                    //   );
+                    // }
+                    // for (Todo todo in _foundTodo.reversed) {
+                    //   int index = _foundTodo.indexOf(todo);
+                    //   TodoItem(
+                    //     todo: todo,
+                    //     onTodoChanged: _handleTodoChange,
+                    //     onDeleteItem: _deleteTodoItem,
+                    //   );
+                    // }
                   ],
                 ),
               )
